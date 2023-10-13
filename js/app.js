@@ -20,6 +20,16 @@ window.mostrarModal = (id) => {
   myModal.show();
 };
 
+const agregarMensaje = (mensaje, color) => {
+  const mensajeDiv = document.querySelector("#mensajeActualizar");
+  mensajeDiv.textContent = mensaje;
+  mensajeDiv.style.display = "block";
+  mensajeDiv.style.backgroundColor = color;
+  setTimeout(() => {
+    mensajeDiv.style.display = "none";
+  }, 4000);
+};
+
 const giftUpdate = (e) => {
   e.preventDefault();
   let index = datos.findIndex((item) => item.id == idGiftUpdate);
@@ -31,6 +41,8 @@ const giftUpdate = (e) => {
 
   cargarTabla();
   myModal.hide();
+
+  agregarMensaje(` Producto "${datos[index].gift}" Actualizado con exito`);
 };
 
 const cargarTabla = () => {
@@ -69,6 +81,12 @@ const agregarGift = (event) => {
   datos.push(new Gift(id, gift, tipo, tiempo, precio, imagen));
   document.querySelector("#formGift").reset();
   cargarTabla();
+  const mensajeDiv = document.querySelector("#mensaje");
+  mensajeDiv.textContent = "Se registró un nuevo producto exitosamente";
+  mensajeDiv.style.display = "block";
+  setTimeout(() => {
+    mensajeDiv.style.display = "none";
+  }, 4000);
 };
 
 window.borrarGift = (id) => {
@@ -81,6 +99,13 @@ window.borrarGift = (id) => {
   if (validar) {
     datos.splice(index, 1);
     cargarTabla();
+    const mensajeEliminarDiv = document.querySelector("#mensajeEliminar");
+    mensajeEliminarDiv.textContent = `Producto "${datos[index].gift}" eliminado con exito`;
+    mensajeEliminarDiv.style.display = "block";
+    setTimeout(() => {
+        mensajeEliminarDiv.style.display = "none";
+      }, 4000);
+    
   }
 };
 
