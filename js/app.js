@@ -4,6 +4,7 @@ import { Gift } from "./clases.js";
 const cuerpoTabla = document.querySelector("#cuerpo-tabla");
 const myModal = new bootstrap.Modal(document.getElementById("modalGift"));
 
+
 let idGiftUpdate = null;
 
 window.mostrarModal = (id) => {
@@ -44,6 +45,7 @@ const giftUpdate = (e) => {
 
   agregarMensaje(` Producto "${datos[index].gift}" Actualizado con exito`);
 };
+
 
 const cargarTabla = () => {
   cuerpoTabla.innerHTML = "";
@@ -113,3 +115,4 @@ cargarTabla();
 
 document.querySelector("#formGift").addEventListener("submit", agregarGift);
 document.querySelector("#formModal").addEventListener("submit", giftUpdate);
+
